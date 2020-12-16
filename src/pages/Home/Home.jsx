@@ -1,53 +1,46 @@
-import React, { useState, useContext } from "react";
-import { Form, Section } from "../../components";
-import { AuthContext } from "../../context/AuthContext";
-
-function getToken(username, password, auth) {
-  fetch(`http://localhost:8080/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  })
-    .then((data) => data.json())
-    .then((data) => auth.setState("Bearer " + data.token));
-}
+import React, { useState, useEffect } from "react";
+import { Section, Card, Hero } from "../../components";
+import * as S from "./Home.style";
 
 function Home() {
-  const auth = useContext(AuthContext);
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [clothes, setClothes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/clothes")
+      .then((res) => res.json())
+      .then((data) => setClothes(data));
+  }, []);
 
   return (
     <>
-      <Section background="#eee" maxWidth="max">
-        <h1>Login</h1>
+      <Hero />
+      <Section contentWidth>
+        <S.FlexBlock>
+          <S.StyledLink to="/forher">
+            <S.FlexBox>
+              <S.TopDiv>Check all outfits for woman &#62;</S.TopDiv>
+              <S.FlexBoxBottom>
+                <S.CenterDiv>Most Wanted</S.CenterDiv>
+                <S.BottomDiv>For Her</S.BottomDiv>
+              </S.FlexBoxBottom>
+            </S.FlexBox>
+          </S.StyledLink>
+          <Card array={clothes.filter((g) => g.gender === 0)} />
+        </S.FlexBlock>
       </Section>
-      <Section>
-        <Form
-          onSubmit={(e) => {
-            e.preventDefault();
-            getToken(username, password, auth);
-          }}
-          inputs={[
-            {
-              id: 1,
-              inputChange: (e) => setUsername(e.target.value),
-              type: "text",
-              placeholder: "Username",
-            },
-            {
-              id: 2,
-              inputChange: (e) => setPassword(e.target.value),
-              type: "password",
-              placeholder: "Password",
-            },
-          ]}
-        ></Form>
+      <Section contentWidth>
+        <S.FlexBlock>
+          <S.StyledLink to="/forhim">
+            <S.FlexBox>
+              <S.TopDiv>Check all outfits for man &#62;</S.TopDiv>
+              <S.FlexBoxBottom>
+                <S.CenterDiv>Most Wanted</S.CenterDiv>
+                <S.BottomDiv>For HIM</S.BottomDiv>
+              </S.FlexBoxBottom>
+            </S.FlexBox>
+          </S.StyledLink>
+          <Card array={clothes.filter((g) => g.gender === 1)} />
+        </S.FlexBlock>
       </Section>
     </>
   );
