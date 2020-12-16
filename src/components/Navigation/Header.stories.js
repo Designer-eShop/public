@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import Header from "./Header";
+import Navigation from "./Navigation";
 import StoryRouter from "storybook-react-router";
 
-storiesOf("Header", module)
+storiesOf("Navigation", module)
   .addDecorator(StoryRouter())
-  .add("Header", () => <Header />);
+  .add("Navigation", () => <Navigation />);
