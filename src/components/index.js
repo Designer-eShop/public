@@ -1,7 +1,11 @@
 export { default as Button } from "./Button/Button";
-export { default as Header } from "./Header/Header";
+export { default as Navigation } from "./Navigation/Navigation";
 export { default as Section } from "./Section/Section";
 export { default as Loading } from "./Loading/Loading";
 export { default as Input } from "./Input/Input";
 export { default as Form } from "./Form/Form";
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
+export { default as Hero } from "./Hero/Hero";
+export { default as Footer } from "./Footer/Footer";
+export { default as Card } from "./Card/Card";
+export { default as Item } from "./Item/Item";
