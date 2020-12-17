@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import HeroImage from "../../assets/Hero-image.jpg";
 
 export const HeroSection = styled.div`
+  @media (min-width: 1400px) {
+    width: 1420px;
+  }
+  margin: 0 auto;
   height: 595px;
-  background-image: url("${HeroImage}");
+  background-image: url("${(props) => props.backgroundimg}");
   color: #ffffff;
-  margin-bottom: 64px;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
 `;
 
 export const HeroWrapper = styled.div`
@@ -36,4 +41,11 @@ export const Slogan = styled.div`
 
 export const Buttons = styled.div`
   margin-top: 48px;
+  display: flex;
 `;
+
+export const Diff = styled.div`
+  width: 24px;
+`;
+
+export const Section = styled.div``;

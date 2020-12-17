@@ -1,27 +1,31 @@
 import React from "react";
-import { Button, Section } from "../";
+import { Button } from "../";
 import * as S from "./Hero.style";
+import { useHistory } from "react-router-dom";
 
-function Hero() {
+function Hero({ buttons, title, slogan, bgimg }) {
+  const history = useHistory();
+
   return (
-    <Section fullWidth>
-      <S.HeroSection>
-        <S.HeroWrapper>
-          <S.HeroCentered>
-            <S.Title>Suddenly obsessed</S.Title>
-            <S.Slogan>Urban clothing for you</S.Slogan>
+    <S.HeroSection backgroundimg={bgimg}>
+      <S.HeroWrapper>
+        <S.HeroCentered>
+          <S.Title>{title}</S.Title>
+          <S.Slogan>{slogan}</S.Slogan>
+          {buttons && (
             <S.Buttons>
-              <Button handeClick={() => console.log("veikia")}>
+              <Button handleClick={() => history.push("/forhim")}>
                 Shop for man
               </Button>
-              <Button handeClick={() => console.log("veikia")}>
+              <S.Diff />
+              <Button handleClick={() => history.push("/forher")}>
                 Shop for woman
               </Button>
             </S.Buttons>
-          </S.HeroCentered>
-        </S.HeroWrapper>
-      </S.HeroSection>
-    </Section>
+          )}
+        </S.HeroCentered>
+      </S.HeroWrapper>
+    </S.HeroSection>
   );
 }
 
