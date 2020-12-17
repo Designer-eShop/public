@@ -4,7 +4,14 @@ import { ReactComponent as Instagram } from "../../assets/social/instagram.svg";
 import { ReactComponent as Facebook } from "../../assets/social/ico.svg";
 import { ReactComponent as Twitter } from "../../assets/social/icon.svg";
 
+export const Content = styled.div`
+  background: #383c43;
+`;
+
 export const Header = styled.div`
+  @media (min-width: 1400px) {
+    width: 1400px;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,8 +19,7 @@ export const Header = styled.div`
   height: 144px;
   padding: 32px 20px 64px;
   box-sizing: border-box;
-  background: #383c43;
-  margin-top: 64px;
+  margin: 0 auto;
 `;
 
 export const LogoDiv = styled.div`
@@ -40,7 +46,9 @@ export const MenuText = styled.div`
   padding: 0 14px;
 `;
 
-export const Logo = styled.img``;
+export const Logo = styled.img`
+  margin-left: 40px;
+`;
 
 export const Inst = styled(Instagram)`
   padding: 0 12px;
