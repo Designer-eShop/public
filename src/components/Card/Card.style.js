@@ -4,10 +4,11 @@ import clothesLogo from "../../assets/clothes-logo.svg";
 import cartLogo from "../../assets/cart.svg";
 
 export const FlexImage = styled.div`
-  width: 335px;
+  width: 325px;
   height: 450px;
-  margin: 0px 10px;
+  margin: 10px 10px;
   background: url(${(props) => props.background});
+  background-size: cover;
 `;
 
 export const ClothesLogo = styled.div`
