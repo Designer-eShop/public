@@ -9,9 +9,6 @@ export const Button = styled.button`
   position: static;
   background: #c33633;
   cursor: pointer;
-  &:last-child {
-    margin-left: 24px;
-  }
   &:hover {
     background-color: #982c2a;
   }
