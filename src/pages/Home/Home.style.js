@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 export const FlexBlock = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 61px 10px;
 `;
 
 export const FlexBox = styled.div`
-  width: 335px;
+  width: 325px;
   height: 450px;
   margin: 0px 10px;
   display: flex;
