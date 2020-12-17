@@ -3,17 +3,22 @@ import { Link } from "react-router-dom";
 import { ReactComponent as CartImage } from "../../assets/cart.svg";
 import { ReactComponent as LogoImage } from "../../assets/logo.svg";
 
+export const Content = styled.div`
+  background: #383c43;
+`;
+
 export const Header = styled.div`
+  @media (min-width: 1400px) {
+    width: 1400px;
+  }
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
-  width: 1440px;
   justify-content: space-between;
   height: 80px;
   padding: 0 20px;
   box-sizing: border-box;
-  background: ${(props) => props.navbgcolor};
 `;
 
 export const LogoDiv = styled.div`
@@ -40,9 +45,7 @@ export const MenuText = styled.div`
 `;
 
 export const Logo = styled(LogoImage)`
-  .logocolor {
-    fill: ${(props) => props.fill};
-  }
+  margin-left: 40px;
 `;
 
 export const Cart = styled(CartImage)`
@@ -59,7 +62,7 @@ export const CenterText = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => props.color};
+  color: #ffffff;
   &:hover {
     color: #a4a4a4;
   }
@@ -70,9 +73,6 @@ export const StyledImage = styled(Link)`
   align-items: center;
   .cart:hover {
     fill: #a4a4a4;
-  }
-  .cart {
-    fill: ${(props) => props.fill};
   }
 `;
 
