@@ -18,13 +18,11 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 0 20px;
+  padding: 0 47.5px;
   box-sizing: border-box;
 `;
 
-export const LogoDiv = styled.div`
-  padding-right: 167px;
-`;
+export const LogoDiv = styled.div``;
 
 export const CenterDiv = styled.div`
   display: flex;
@@ -34,7 +32,6 @@ export const CenterDiv = styled.div`
 export const MenuDiv = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: 0 40px;
 `;
 
 export const MenuText = styled.div`
@@ -42,11 +39,9 @@ export const MenuText = styled.div`
   align-items: center;
   font-size: 16px;
   line-height: 19px;
-  padding: 0 14px;
 `;
 
 export const Logo = styled(LogoImage)`
-  margin-left: 40px;
   @media (max-width: 768px) {
     margin-left: 10px;
   }
@@ -67,10 +62,11 @@ export const CenterText = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  margin-left: 14px;
   text-decoration: none;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.light};
   &:hover {
-    color: #a4a4a4;
+    color: ${(props) => props.theme.text.hover};
   }
 `;
 
@@ -90,7 +86,7 @@ export const StyledLogo = styled(Link)`
 `;
 
 export const ItemCount = styled.span`
-  color: white;
+  color: ${(props) => props.theme.text.light};
   position: absolute;
   top: -50%;
   right: 0;

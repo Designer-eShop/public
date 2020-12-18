@@ -6,7 +6,7 @@ export const Form = styled.form``;
 export const Label = styled.label`
   font-size: 24px;
   line-height: 24px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;
 
 export const Forgot = styled.div`
@@ -15,12 +15,12 @@ export const Forgot = styled.div`
   line-height: 24px;
   margin-top: -20px;
   text-align: right;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;
 
 export const Register = styled.div`
@@ -28,7 +28,7 @@ export const Register = styled.div`
   font-size: 12px;
   line-height: 24px;
   margin-top: 20px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;
 
 export const LoginNot = styled.div`
@@ -36,5 +36,5 @@ export const LoginNot = styled.div`
   font-size: 12px;
   line-height: 24px;
   margin-top: 20px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;

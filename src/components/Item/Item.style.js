@@ -55,19 +55,19 @@ export const Logo = styled(ClothesLogo)`
 `;
 
 export const Product = styled.div`
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   font-size: 64px;
   line-height: 77px;
 `;
 
 export const Name = styled.div`
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   font-size: 40px;
   line-height: 48px;
 `;
 
 export const Description = styled.div`
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   font-size: 16px;
   line-height: 150%;
   font-family: Roboto;
@@ -80,7 +80,7 @@ export const Price = styled.div`
   @media (max-width: 768px) {
     margin: 32px 9px;
   }
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   margin: 64px 0px 32px 0px;
   font-size: 40px;
   line-height: 48px;

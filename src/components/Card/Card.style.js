@@ -31,17 +31,30 @@ export const Hover = styled.div`
 `;
 
 export const HoverEffect = styled.div`
-  opacity: 0;
+  @media (max-width: 768px) {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    color: ${(props) => props.theme.text.light};
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  opacity: 0.5;
   height: 100%;
   padding: 24px;
   box-sizing: border-box;
-  &:hover {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    color: white;
-    opacity: 1;
-    display: ${(props) => props.display};
-    flex-direction: column;
-    justify-content: flex-end;
+  @media (min-width: 768px) {
+    opacity: 0;
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    &:hover {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      color: ${(props) => props.theme.text.light};
+      opacity: 1;
+      display: ${(props) => props.display};
+      flex-direction: column;
+      justify-content: flex-end;
+    }
   }
 `;
 
@@ -53,5 +66,4 @@ export const HoverText = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #383c43;
 `;

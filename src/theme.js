@@ -3,19 +3,14 @@ const theme = {
     desktop: "1400px",
     tablet: "768px",
   },
-  primary: {
-    background: "#555",
-    color: "#ffffff",
-    hovercolor: "#dddddd",
+  button: {
+    default: "#c33633",
+    hover: "#982c2a",
   },
-  secondary: {
-    background: "#eee",
-    color: "#000",
-    hovercolor: "gray",
-  },
-  global: {
-    white: "#ffffff",
-    gray: "#383C43",
+  text: {
+    light: "#ffffff",
+    dark: "#383C43",
+    hover: "#a4a4a4",
   },
 };
 

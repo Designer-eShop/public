@@ -7,7 +7,7 @@ export const Title = styled.div`
   line-height: 77px;
   text-align: center;
   padding-bottom: 64px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
 `;
 
 export const Container = styled.div`

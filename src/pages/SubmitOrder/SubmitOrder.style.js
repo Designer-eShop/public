@@ -9,14 +9,14 @@ export const Container = styled.div`
 export const Title = styled.div`
   font-size: 64px;
   line-height: 77px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   text-align: center;
 `;
 
 export const SubTitle = styled.div`
   font-size: 40px;
   line-height: 48px;
-  color: #383c43;
+  color: ${(props) => props.theme.text.dark};
   padding: 32px;
   text-align: center;
 `;

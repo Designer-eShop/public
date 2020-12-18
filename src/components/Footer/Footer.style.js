@@ -17,7 +17,7 @@ export const Header = styled.div`
     padding: 32px 0px 64px 0px;
     height: 251px;
   }
-  padding: 0 20px;
+  padding: 0 47.5px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -68,9 +68,9 @@ export const CenterText = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.light};
   &:hover {
-    color: #a4a4a4;
+    color: ${(props) => props.theme.text.hover};
   }
 `;
 
@@ -86,5 +86,5 @@ export const StyledLogo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.light};
 `;

@@ -7,7 +7,7 @@ export const HeroSection = styled.div`
   margin: 0 auto;
   height: 595px;
   background-image: url("${(props) => props.backgroundimg}");
-  color: #ffffff;
+  color: ${(props) => props.theme.text.light};
   display: flex;
   justify-content: center;
   background-repeat: no-repeat;
@@ -55,9 +55,10 @@ export const Slogan = styled.div`
 export const Buttons = styled.div`
   margin-top: 48px;
   display: flex;
+  height: 106px;
   @media (max-width: 768px) {
-    margin-top: 0;
     flex-direction: column;
+    justify-content: space-between;
   }
 `;
 

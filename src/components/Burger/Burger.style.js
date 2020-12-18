@@ -18,9 +18,8 @@ export const StyledBurger = styled.div`
 export const Ul = styled.ul`
   list-style: none;
   display: flex;
-  /* flex-flow: row nowrap; */
   flex-flow: column nowrap;
-  background-color: #a4a4a4;
+  background-color: ${(props) => props.theme.text.hover};
   position: fixed;
   transform: ${({ open }) => (open ? "translateX(40%)" : "translateX(100%)")};
   top: 0;
@@ -31,14 +30,14 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
   padding: 18px 10px;
-  color: #fff;
+  color: ${(props) => props.theme.text.light};
 `;
 
 export const Hamburger = styled(MenuImage)``;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #ffffff;
+  color: ${(props) => props.theme.text.light};
 `;
 
 export const Cart = styled(CartImage)``;
