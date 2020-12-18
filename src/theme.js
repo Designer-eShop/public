@@ -1,4 +1,8 @@
 const theme = {
+  breakpoints: {
+    desktop: "1400px",
+    tablet: "768px",
+  },
   primary: {
     background: "#555",
     color: "#ffffff",
@@ -10,7 +14,8 @@ const theme = {
     hovercolor: "gray",
   },
   global: {
-    active: "#bbbbbb",
+    white: "#ffffff",
+    gray: "#383C43",
   },
 };
 

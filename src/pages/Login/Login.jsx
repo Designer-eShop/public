@@ -27,7 +27,6 @@ function Home() {
   const auth = useContext(AuthContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  console.log(auth);
 
   return (
     <>

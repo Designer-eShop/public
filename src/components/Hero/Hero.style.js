@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const HeroSection = styled.div`
-  @media (min-width: 1400px) {
-    width: 1420px;
-  }
+
   margin: 0 auto;
   height: 595px;
   background-image: url("${(props) => props.backgroundimg}");
