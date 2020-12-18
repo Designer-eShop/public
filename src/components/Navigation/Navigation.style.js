@@ -69,6 +69,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledImage = styled(Link)`
+  position: relative;
   display: flex;
   align-items: center;
   .cart:hover {
@@ -80,4 +81,19 @@ export const StyledLogo = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
+`;
+
+export const ItemCount = styled.span`
+  color: white;
+  position: absolute;
+  top: -50%;
+  right: 0;
+  background: ${(props) => props.background};
+  width: 20px;
+  height: 20px;
+  border: 1px solid #383c43;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  border-radius: 50%;
 `;

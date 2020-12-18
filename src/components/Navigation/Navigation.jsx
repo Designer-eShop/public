@@ -1,10 +1,21 @@
 import React, { useContext } from "react";
 import * as S from "./Navigation.style";
 import { AuthContext } from "../../context/AuthContext";
+import { CartContext } from "../../context/CartContext";
 import { Section } from "../";
 
 function Navigation() {
   const auth = useContext(AuthContext);
+  const cart = useContext(CartContext);
+
+  const checkArray = () => {
+    if (Array.isArray(cart.items)) {
+      return cart.items.length;
+    } else {
+      return JSON.parse("[" + cart.items + "]").length;
+    }
+  };
+
   // const history = useHistory();
   // const [scrollbar, setScrollbar] = useState(false);
 
@@ -47,6 +58,11 @@ function Navigation() {
           </S.CenterDiv>
           <S.MenuDiv>
             <S.StyledImage to="/cart">
+              <S.ItemCount
+                background={cart.items.length === 0 ? "#a4a4a4" : "#c33633"}
+              >
+                {checkArray()}
+              </S.ItemCount>
               <S.Cart />
             </S.StyledImage>
             {auth.state && auth.state !== "null" && (
