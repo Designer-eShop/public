@@ -21,7 +21,11 @@ function Item({ array }) {
               <S.Price>{item.price / 100} €</S.Price>
               <Button
                 handleClick={() => {
-                  cart.setItems(cart.items.concat([item.id]));
+                  if (cart.items.includes(item.id)) {
+                    alert("Collection includes only single item per product");
+                  } else {
+                    cart.setItems(cart.items.concat([item.id]));
+                  }
                 }}
               >
                 Add to cart
