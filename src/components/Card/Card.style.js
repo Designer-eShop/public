@@ -1,9 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import clothesLogo from "../../assets/clothes-logo.svg";
-import cartLogo from "../../assets/cart.svg";
 
 export const FlexImage = styled.div`
+  @media (max-width: 768px) {
+    margin: 10px 0px;
+  }
+  @media (max-width: 320px) {
+    margin: 5px 0px;
+    width: 280px;
+    height: 405px;
+  }
   width: 325px;
   height: 450px;
   margin: 10px 10px;
@@ -16,13 +23,6 @@ export const ClothesLogo = styled.div`
   width: 20px;
   margin-bottom: 8px;
   background: url(${clothesLogo});
-  background-repeat: no-repeat;
-`;
-
-export const CartLogo = styled.div`
-  height: 20px;
-  width: 20px;
-  background: url(${cartLogo});
   background-repeat: no-repeat;
 `;
 

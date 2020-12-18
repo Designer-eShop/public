@@ -61,6 +61,9 @@ export const CenterText = styled.div`
   font-size: 24px;
   line-height: 29px;
   padding: 0px 20px;
+  @media (max-height: 768px) {
+    padding: 0px 12px;
+  }
 `;
 
 export const StyledLink = styled(Link)`

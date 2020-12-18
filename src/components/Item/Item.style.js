@@ -2,25 +2,51 @@ import styled from "styled-components";
 import { ReactComponent as ClothesLogo } from "../../assets/clothes-logo.svg";
 
 export const Container = styled.div`
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;
+    flex-direction: column;
+  }
+  @media (min-width: 1440px) {
+    width: 1024px;
+  }
   margin: 0px 148px;
   padding: 160px 0px 128px 0px;
-  width: 1024px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 `;
 
 export const Image = styled.img`
-  width: 555px;
-  height: 800px;
+  @media (max-width: 768px) {
+    min-width: 290px;
+    min-height: 420px;
+  }
+  @media (max-width: 768px) {
+    max-width: 290px;
+    max-height: 420px;
+  }
+  min-width: 440px;
+  min-height: 600px;
 `;
 
 export const TextBox = styled.div`
+  @media (max-width: 768px) {
+    margin-left: 0;
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: left;
+  }
   text-align: left;
-  margin-left: 138px;
+  margin-left: 112px;
 `;
 
 export const Logo = styled(ClothesLogo)`
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    margin-top: 32px;
+  }
   width: 64px;
   height: 64px;
   .clotheslogo {
@@ -30,14 +56,14 @@ export const Logo = styled(ClothesLogo)`
 
 export const Product = styled.div`
   color: #383c43;
-  font-size: 120px;
-  line-height: 144px;
+  font-size: 64px;
+  line-height: 77px;
 `;
 
 export const Name = styled.div`
   color: #383c43;
-  font-size: 64px;
-  line-height: 77px;
+  font-size: 40px;
+  line-height: 48px;
 `;
 
 export const Description = styled.div`
@@ -51,8 +77,11 @@ export const Description = styled.div`
 `;
 
 export const Price = styled.div`
+  @media (max-width: 768px) {
+    margin: 32px 9px;
+  }
   color: #383c43;
   margin: 64px 0px 32px 0px;
-  font-size: 64px;
-  line-height: 77px;
+  font-size: 40px;
+  line-height: 48px;
 `;

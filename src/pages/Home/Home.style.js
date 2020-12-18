@@ -8,6 +8,14 @@ export const FlexBlock = styled.div`
 `;
 
 export const FlexBox = styled.div`
+  @media (max-width: 768px) {
+    margin: 10px 0px;
+  }
+  @media (max-width: 320px) {
+    margin: 5px 0px;
+    width: 290px;
+    height: 242px;
+  }
   width: 325px;
   height: 450px;
   margin: 0px 10px;

@@ -10,7 +10,6 @@ export const StyledBurger = styled.div`
   top: 24px;
   right: 20px;
   z-index: 20;
-  display: none;
   display: flex;
   justify-content: space-around;
   flex-flow: column nowrap;
@@ -19,7 +18,7 @@ export const StyledBurger = styled.div`
 export const Ul = styled.ul`
   list-style: none;
   display: flex;
-  flex-flow: row nowrap;
+  /* flex-flow: row nowrap; */
   flex-flow: column nowrap;
   background-color: #a4a4a4;
   position: fixed;
