@@ -33,15 +33,17 @@ const Burger = () => {
             <S.Li>REGISTER</S.Li>
           </S.StyledLink>
         )}
-        <S.StyledLink
-          onClick={() => {
-            localStorage.removeItem("token");
-            auth.setState("");
-          }}
-          to="/"
-        >
-          <S.Li>Log Out</S.Li>
-        </S.StyledLink>
+        {auth.state && auth.state !== "null" && (
+          <S.StyledLink
+            onClick={() => {
+              localStorage.removeItem("token");
+              auth.setState("");
+            }}
+            to="/"
+          >
+            <S.Li>Log Out</S.Li>
+          </S.StyledLink>
+        )}
       </S.Ul>
     </>
   );
