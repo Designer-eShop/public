@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as CartImage } from "../../assets/cart.svg";
 import { ReactComponent as LogoImage } from "../../assets/logo.svg";
+import { ReactComponent as MenuImage } from "../../assets/menu.svg";
 
 export const Content = styled.div`
   background: #383c43;
@@ -46,7 +47,12 @@ export const MenuText = styled.div`
 
 export const Logo = styled(LogoImage)`
   margin-left: 40px;
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
 `;
+
+export const Hamburger = styled(MenuImage)``;
 
 export const Cart = styled(CartImage)`
   padding: 0 12px;

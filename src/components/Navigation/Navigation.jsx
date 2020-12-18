@@ -1,12 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import * as S from "./Navigation.style";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
-import { Section } from "../";
+import { Section, Burger } from "../";
 
 function Navigation() {
   const auth = useContext(AuthContext);
   const cart = useContext(CartContext);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => setWidth(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  });
 
   const checkArray = () => {
     if (Array.isArray(cart.items)) {
@@ -39,7 +47,7 @@ function Navigation() {
 
   // window.addEventListener("scroll", changeBackground);
 
-  return (
+  return width > 768 ? (
     <Section fullWidth>
       <S.Content>
         <S.Header>
@@ -90,6 +98,15 @@ function Navigation() {
         </S.Header>
       </S.Content>
     </Section>
+  ) : (
+    <S.Content>
+      <S.Header>
+        <S.StyledLogo to="/">
+          <S.Logo />
+        </S.StyledLogo>
+        <Burger />
+      </S.Header>
+    </S.Content>
   );
 }
 

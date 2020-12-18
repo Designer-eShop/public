@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+  @media (max-width: 768px) {
+    margin: 10px;
+  }
   color: #ffffff;
   font-size: 24px;
   line-height: 122.2%;
