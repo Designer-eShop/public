@@ -78,7 +78,7 @@ export const StyledImage = styled(Link)`
   display: flex;
   align-items: center;
   .icons:hover {
-    fill: #a4a4a4;
+    fill: ${(props) => props.theme.text.hover};
   }
 `;
 

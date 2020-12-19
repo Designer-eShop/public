@@ -75,7 +75,7 @@ export const StyledImage = styled(Link)`
   display: flex;
   align-items: center;
   .cart:hover {
-    fill: #a4a4a4;
+    fill: ${(props) => props.theme.text.hover};
   }
 `;
 
