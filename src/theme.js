@@ -7,6 +7,12 @@ const theme = {
     default: "#c33633",
     hover: "#982c2a",
   },
+  background: {
+    dark: "#383C43",
+  },
+  border: {
+    dark: "#383C43",
+  },
   text: {
     light: "#ffffff",
     dark: "#383C43",
