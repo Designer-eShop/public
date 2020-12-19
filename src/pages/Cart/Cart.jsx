@@ -40,7 +40,7 @@ function Cart() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/clothes")
+    fetch("http://192.168.1.11:8080/clothes")
       .then((res) => res.json())
       .then((data) => setClothes(data));
   }, []);

@@ -6,7 +6,7 @@ function Product({ match }) {
   const productId = match.params.id;
 
   useEffect(() => {
-    fetch("http://localhost:8080/clothes/" + productId)
+    fetch("http://192.168.1.11:8080/clothes/" + productId)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [productId]);

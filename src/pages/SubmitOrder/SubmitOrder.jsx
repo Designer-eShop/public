@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import * as S from "./SubmitOrder.style";
 
 function updateUser(name, surname, phone, street, city, zip, auth, setError) {
-  fetch(`http://localhost:8080/updateuser`, {
+  fetch(`http://192.168.1.11:8080/updateuser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function updateUser(name, surname, phone, street, city, zip, auth, setError) {
 }
 
 function submitCart(cart, auth, setError, history) {
-  fetch(`http://localhost:8080/cart`, {
+  fetch(`http://192.168.1.11:8080/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

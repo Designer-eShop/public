@@ -4,8 +4,8 @@ import { ReactComponent as ClothesLogo } from "../../assets/clothes-logo.svg";
 export const Container = styled.div`
   @media (max-width: 768px) {
     margin: 0 auto;
-    padding: 0;
     flex-direction: column;
+    padding: 64px 0px;
   }
   @media (min-width: 1440px) {
     width: 1024px;
