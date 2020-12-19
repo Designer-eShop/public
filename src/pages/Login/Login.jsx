@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Form, Section } from "../../components";
+import { Form, Section, Notification } from "../../components";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import * as S from "./Login.style";
 
-function getToken(email, password, auth, history) {
+function getToken(email, password, auth, history, setError) {
   fetch(`http://localhost:8080/login`, {
     method: "POST",
     headers: {
@@ -15,22 +15,42 @@ function getToken(email, password, auth, history) {
       password,
     }),
   })
-    .then((data) => data.json())
+    .then((res) => res.json())
     .then((data) => {
-      history.push("/");
-      auth.setState("Bearer " + data.token);
-    });
+      if (data.msg !== "Email or password is incorrect") {
+        history.push("/");
+        auth.setState("Bearer " + data.token);
+      } else {
+        setError({ display: true, message: data.msg, color: "error" });
+      }
+    })
+    .catch((res) =>
+      setError({ display: true, message: res.message, color: "error" })
+    );
 }
 
-function Home() {
+function Login() {
   const history = useHistory();
   const auth = useContext(AuthContext);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   return (
     <>
       <Section>
+        {error.display && (
+          <Notification
+            color={error.color}
+            handleChange={() => setError(false)}
+          >
+            {error.message}
+          </Notification>
+        )}
         <S.Container>
           <S.Title>Login</S.Title>
           <Form
@@ -38,9 +58,10 @@ function Home() {
             register
             onSubmit={(e) => {
               e.preventDefault();
-              getToken(email, password, auth, history);
+              getToken(email, password, auth, history, setError);
             }}
             buttonName="Login"
+            required
             inputs={[
               {
                 id: 1,
@@ -64,4 +85,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Login;

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Section, Form } from "../../components";
+import { Section, Form, Notification } from "../../components";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 import * as S from "./SubmitOrder.style";
 
-function updateUser(name, surname, phone, street, city, zip, auth) {
+function updateUser(name, surname, phone, street, city, zip, auth, setError) {
   fetch(`http://localhost:8080/updateuser`, {
     method: "POST",
     headers: {
@@ -23,10 +23,13 @@ function updateUser(name, surname, phone, street, city, zip, auth) {
     .then((data) => data.json())
     .then((data) => {
       console.log(data);
-    });
+    })
+    .catch((res) =>
+      setError({ display: true, message: res.message, color: "error" })
+    );
 }
 
-function submitCart(cart, auth) {
+function submitCart(cart, auth, setError) {
   fetch(`http://localhost:8080/cart`, {
     method: "POST",
     headers: {
@@ -39,9 +42,12 @@ function submitCart(cart, auth) {
   })
     .then((data) => data.json())
     .then((data) => {
-      cart.setItems([]);
       console.log(data);
-    });
+      cart.setItems([]);
+    })
+    .catch((res) =>
+      setError({ display: true, message: res.message, color: "error" })
+    );
 }
 
 function SubmitOrder() {
@@ -53,17 +59,28 @@ function SubmitOrder() {
   const [street, setStreet] = useState();
   const [city, setCity] = useState();
   const [zip, setZip] = useState();
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   return (
     <Section>
+      {error.display && (
+        <Notification color={error.color} handleChange={() => setError(false)}>
+          {error.message}
+        </Notification>
+      )}
       <S.Container>
         <S.Title>Submit order</S.Title>
         <S.SubTitle>Provide shipping information</S.SubTitle>
         <Form
+          required
           onSubmit={(e) => {
             e.preventDefault();
-            updateUser(name, surname, phone, street, city, zip, auth);
-            submitCart(cart, auth);
+            updateUser(name, surname, phone, street, city, zip, auth, setError);
+            submitCart(cart, auth, setError);
           }}
           buttonName="Submit"
           inputs={[

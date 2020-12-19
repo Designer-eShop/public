@@ -11,3 +11,4 @@ export { default as Card } from "./Card/Card";
 export { default as Item } from "./Item/Item";
 export { default as CartItem } from "./CartItem/CartItem";
 export { default as Burger } from "./Burger/Burger";
+export { default as Notification } from "./Notification/Notification";
