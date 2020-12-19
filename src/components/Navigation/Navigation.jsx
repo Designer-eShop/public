@@ -76,6 +76,7 @@ function Navigation({ location }) {
                 >
                   Log Out
                 </S.StyledLink>
+                <S.StyledLink to="/orders">Orders</S.StyledLink>
               </S.MenuText>
             )}
             <S.MenuText>
