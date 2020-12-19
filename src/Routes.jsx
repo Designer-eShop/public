@@ -10,6 +10,7 @@ const ForHerLazy = lazy(() => import("./pages/ForHer/ForHer"));
 const ForHimLazy = lazy(() => import("./pages/ForHim/ForHim"));
 const CartLazy = lazy(() => import("./pages/Cart/Cart"));
 const SubmitLazy = lazy(() => import("./pages/SubmitOrder/SubmitOrder"));
+const OrdersLazy = lazy(() => import("./pages/Orders/Orders"));
 
 function Routes() {
   return (
@@ -25,6 +26,7 @@ function Routes() {
           <Route exact path="/forhim" component={ForHimLazy} />
           <Route exact path="/cart" component={CartLazy} />
           <PrivateRoute exact path="/submit" component={SubmitLazy} />
+          <PrivateRoute exact path="/orders" component={OrdersLazy} />
         </Switch>
       </Suspense>
       <Footer />
