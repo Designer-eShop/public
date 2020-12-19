@@ -8,6 +8,7 @@ const theme = {
     hover: "#982c2a",
   },
   background: {
+    light: "#F7F7F7",
     dark: "#383C43",
   },
   border: {
