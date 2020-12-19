@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import { Section, Burger } from "../";
 
-function Navigation() {
+function Navigation({ location }) {
   const auth = useContext(AuthContext);
   const cart = useContext(CartContext);
   const [width, setWidth] = useState(window.innerWidth);
@@ -15,14 +15,6 @@ function Navigation() {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   });
-
-  const checkArray = () => {
-    if (Array.isArray(cart.items)) {
-      return cart.items.length;
-    } else {
-      return JSON.parse("[" + cart.items + "]").length;
-    }
-  };
 
   // const history = useHistory();
   // const [scrollbar, setScrollbar] = useState(false);
@@ -69,7 +61,7 @@ function Navigation() {
               <S.ItemCount
                 background={cart.items.length === 0 ? "#a4a4a4" : "#c33633"}
               >
-                {checkArray()}
+                {cart.items.length}
               </S.ItemCount>
               <S.Cart />
             </S.StyledImage>

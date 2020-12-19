@@ -3,7 +3,15 @@ import * as S from "./Form.style";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
-function Form({ onSubmit, inputs, buttonName, forgot, register, loginNot }) {
+function Form({
+  onSubmit,
+  inputs,
+  buttonName,
+  forgot,
+  register,
+  loginNot,
+  required,
+}) {
   return (
     <S.Form onSubmit={onSubmit}>
       {inputs &&
@@ -14,6 +22,7 @@ function Form({ onSubmit, inputs, buttonName, forgot, register, loginNot }) {
               inputChange={item.inputChange}
               type={item.type}
               placeholder={item.placeholder}
+              required={required}
             />
           </S.Label>
         ))}
