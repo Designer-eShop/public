@@ -82,6 +82,7 @@ export const ButtonDiv = styled.div`
     text-align: left;
   }
   text-align: right;
+  display: ${(props) => props.btndisplay};
 `;
 
 export const DeleteButton = styled.button`

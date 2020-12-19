@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./CartItem.style";
 
-function CartItem({ array, deleteButton }) {
+function CartItem({ array, deleteButton, btndisplay }) {
   const [width, setWidth] = useState(window.innerWidth);
 
   const updateWidth = () => setWidth(window.innerWidth);
@@ -27,7 +27,7 @@ function CartItem({ array, deleteButton }) {
             </S.FlexContainer>
             <S.FlexContainerRight>
               <S.Price>{item.price / 100} €</S.Price>
-              <S.ButtonDiv>
+              <S.ButtonDiv btndisplay={btndisplay}>
                 <S.DeleteButton value={item.id} onClick={deleteButton} />
               </S.ButtonDiv>
             </S.FlexContainerRight>
@@ -52,7 +52,7 @@ function CartItem({ array, deleteButton }) {
                   {item.size.length > 1 ? item.size.slice(0, 1) : item.size}
                 </S.Size>
                 <S.Price>{item.price / 100} €</S.Price>
-                <S.ButtonDiv>
+                <S.ButtonDiv btndisplay={btndisplay}>
                   <S.DeleteButton value={item.id} onClick={deleteButton} />
                 </S.ButtonDiv>
               </S.Info>
