@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navigation, Loading, PrivateRoute, Footer } from "./components";
 
 const HomeLazy = lazy(() => import("./pages/Home/Home"));
-const SecretLazy = lazy(() => import("./pages/Secret/Secret"));
 const ProductLazy = lazy(() => import("./pages/Product/Product"));
 const LoginLazy = lazy(() => import("./pages/Login/Login"));
 const RegisterLazy = lazy(() => import("./pages/Register/Register"));
@@ -20,13 +19,12 @@ function Routes() {
         <Switch>
           <Route exact path="/" component={HomeLazy} />
           <Route exact path="/clothes/:id" component={ProductLazy} />
-          <PrivateRoute exact path="/secret" component={SecretLazy} />
           <Route exact path="/login" component={LoginLazy} />
           <Route exact path="/register" component={RegisterLazy} />
           <Route exact path="/forher" component={ForHerLazy} />
           <Route exact path="/forhim" component={ForHimLazy} />
           <Route exact path="/cart" component={CartLazy} />
-          <Route exact path="/submit" component={SubmitLazy} />
+          <PrivateRoute exact path="/submit" component={SubmitLazy} />
         </Switch>
       </Suspense>
       <Footer />
