@@ -23,6 +23,7 @@ export const Total = styled.div`
   @media (max-width: 768px) {
     font-size: 24px;
     line-height: 29px;
+    margin-top: 16px;
   }
   font-size: 40px;
   line-height: 48px;
