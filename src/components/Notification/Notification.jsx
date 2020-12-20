@@ -6,9 +6,7 @@ function Notification({ children, color, handleChange }) {
     <S.Box>
       <S.NotificationBox color={color}>
         {children}
-        <S.NotificationButton onClick={handleChange}>
-          Close
-        </S.NotificationButton>
+        <S.NotificationButton onClick={handleChange}>x</S.NotificationButton>
       </S.NotificationBox>
     </S.Box>
   );

@@ -1,17 +1,29 @@
-import React, { useContext } from "react";
-import { Section, Button } from "../";
+import React, { useContext, useState } from "react";
+import { Section, Button, Notification } from "../";
 import * as S from "./Item.style";
 import { CartContext } from "../../context/CartContext";
 
 function Item({ array }) {
   const cart = useContext(CartContext);
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   return (
     <Section>
+      {error.display && (
+        <Notification color={error.color} handleChange={() => setError(false)}>
+          {error.message}
+        </Notification>
+      )}
       {array &&
         array.map((item) => (
           <S.Container key={item.id}>
-            <S.Image src={item.image} />
+            <S.ImageBlock>
+              <S.Image background={item.image} />
+            </S.ImageBlock>
             <S.TextBox>
               <S.Logo />
               <S.Product>{item.title.split(" ").slice(0, 1)}</S.Product>
@@ -22,9 +34,19 @@ function Item({ array }) {
               <Button
                 handleClick={() => {
                   if (cart.items.includes(item.id)) {
-                    alert("Collection includes only single item per product");
+                    setError({
+                      display: true,
+                      message:
+                        "Collection includes only single item per product",
+                      color: "danger",
+                    });
                   } else {
                     cart.setItems(cart.items.concat([item.id]));
+                    setError({
+                      display: true,
+                      message: "Succesfully added to cart",
+                      color: "success",
+                    });
                   }
                 }}
               >

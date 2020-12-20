@@ -5,7 +5,7 @@ import { ReactComponent as Facebook } from "../../assets/social/ico.svg";
 import { ReactComponent as Twitter } from "../../assets/social/icon.svg";
 
 export const Content = styled.div`
-  background: #383c43;
+  background: ${(props) => props.theme.background.dark};
 `;
 
 export const Header = styled.div`

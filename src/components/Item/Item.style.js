@@ -5,29 +5,29 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     margin: 0 auto;
     flex-direction: column;
-    padding: 64px 0px;
   }
   @media (min-width: 1440px) {
     width: 1024px;
   }
-  margin: 0px 148px;
-  padding: 160px 0px 128px 0px;
+  padding: 64px 0px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 `;
 
-export const Image = styled.img`
+export const ImageBlock = styled.div``;
+
+export const Image = styled.div`
   @media (max-width: 768px) {
-    min-width: 290px;
-    min-height: 420px;
+    width: 290px;
+    height: 420px;
   }
-  @media (max-width: 768px) {
-    max-width: 290px;
-    max-height: 420px;
-  }
-  min-width: 440px;
-  min-height: 600px;
+  background: url(${(props) => props.background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 440px;
+  height: 600px;
 `;
 
 export const TextBox = styled.div`
@@ -36,6 +36,9 @@ export const TextBox = styled.div`
     display: flex;
     flex-flow: nowrap column;
     justify-content: left;
+  }
+  @media (min-width: 768px) {
+    width: 450px;
   }
   text-align: left;
   margin-left: 112px;

@@ -4,11 +4,22 @@ import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import { Section, Burger } from "../";
 
-function Navigation({ location }) {
+function Navigation({
+  linkcolor,
+  linkhover,
+  position,
+  cartfill,
+  logofill,
+  menufill,
+  navbgcolor,
+  navbgcolorfs,
+}) {
   const auth = useContext(AuthContext);
   const cart = useContext(CartContext);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [open, setOpen] = useState(false);
 
+  // Check for window width for responsive view
+  const [width, setWidth] = useState(window.innerWidth);
   const updateWidth = () => setWidth(window.innerWidth);
 
   useEffect(() => {
@@ -16,44 +27,47 @@ function Navigation({ location }) {
     return () => window.removeEventListener("resize", updateWidth);
   });
 
-  // const history = useHistory();
-  // const [scrollbar, setScrollbar] = useState(false);
+  // Check for scrollbar position to change navigation background
+  const changeBackground = () => {
+    if (window.scrollY >= 10) {
+      setOpen(false);
+    }
+  };
 
-  // const [fill, setFill] = useState("");
-  // useEffect(() => {
-  //   if (history.location.pathname !== "/") {
-  //     setFill("#383C43");
-  //   } else {
-  //     setFill("#ffffff");
-  //   }
-  // }, [history]);
-
-  // const changeBackground = () => {
-  //   if (window.scrollY >= 80) {
-  //     setScrollbar(true);
-  //   } else {
-  //     setScrollbar(false);
-  //   }
-  // };
-  //  navbgcolor={scrollbar ? "#383C43" : "#383C43"}
-
-  // window.addEventListener("scroll", changeBackground);
+  window.addEventListener("scroll", changeBackground);
 
   return width > 768 ? (
     <Section fullWidth>
       <S.Content>
-        <S.Header>
+        <S.Header
+          navbgcolor={navbgcolor}
+          navwidth={width - 15 + "px"}
+          position={position}
+          navbgcolorfs={navbgcolorfs}
+        >
           <S.LogoDiv>
             <S.StyledLogo to="/">
-              <S.Logo />
+              <S.Logo logofill={logofill} />
             </S.StyledLogo>
           </S.LogoDiv>
           <S.CenterDiv>
             <S.CenterText>
-              <S.StyledLink to="/forhim">MAN</S.StyledLink>
+              <S.StyledLink
+                linkcolor={linkcolor}
+                hovercolor={linkhover}
+                to="/forhim"
+              >
+                MAN
+              </S.StyledLink>
             </S.CenterText>
             <S.CenterText>
-              <S.StyledLink to="/forher">WOMAN</S.StyledLink>
+              <S.StyledLink
+                linkcolor={linkcolor}
+                hovercolor={linkhover}
+                to="/forher"
+              >
+                WOMAN
+              </S.StyledLink>
             </S.CenterText>
           </S.CenterDiv>
           <S.MenuDiv>
@@ -63,11 +77,13 @@ function Navigation({ location }) {
               >
                 {cart.items.length}
               </S.ItemCount>
-              <S.Cart />
+              <S.Cart cartfill={cartfill} />
             </S.StyledImage>
             {auth.state && auth.state !== "null" && (
               <S.MenuText>
                 <S.StyledLink
+                  linkcolor={linkcolor}
+                  hovercolor={linkhover}
                   onClick={() => {
                     localStorage.removeItem("token");
                     auth.setState("");
@@ -76,15 +92,35 @@ function Navigation({ location }) {
                 >
                   Log Out
                 </S.StyledLink>
-                <S.StyledLink to="/orders">Orders</S.StyledLink>
+                <S.StyledLink
+                  linkcolor={linkcolor}
+                  hovercolor={linkhover}
+                  to="/orders"
+                >
+                  Orders
+                </S.StyledLink>
               </S.MenuText>
             )}
             <S.MenuText>
-              {!auth.state && <S.StyledLink to="/login">LOGIN</S.StyledLink>}
+              {!auth.state && (
+                <S.StyledLink
+                  linkcolor={linkcolor}
+                  hovercolor={linkhover}
+                  to="/login"
+                >
+                  LOGIN
+                </S.StyledLink>
+              )}
             </S.MenuText>
             <S.MenuText>
               {!auth.state && (
-                <S.StyledLink to="/register">REGISTER</S.StyledLink>
+                <S.StyledLink
+                  linkcolor={linkcolor}
+                  hovercolor={linkhover}
+                  to="/register"
+                >
+                  REGISTER
+                </S.StyledLink>
               )}
             </S.MenuText>
           </S.MenuDiv>
@@ -93,11 +129,15 @@ function Navigation({ location }) {
     </Section>
   ) : (
     <S.Content>
-      <S.Header>
+      <S.Header position={position} navbgcolor={navbgcolor}>
         <S.StyledLogo to="/">
-          <S.Logo />
+          <S.Logo logofill={logofill} />
         </S.StyledLogo>
-        <Burger />
+        <Burger
+          open={open}
+          handleClick={() => setOpen(!open)}
+          menufill={menufill}
+        />
       </S.Header>
     </S.Content>
   );

@@ -1,15 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import * as S from "./Burger.style";
 import { AuthContext } from "../../context/AuthContext";
 
-const Burger = () => {
-  const [open, setOpen] = useState(false);
+const Burger = ({ menufill, open, handleClick }) => {
   const auth = useContext(AuthContext);
 
   return (
     <>
-      <S.StyledBurger open={open} onClick={() => setOpen(!open)}>
-        <S.Hamburger />
+      <S.StyledBurger open={open} onClick={handleClick}>
+        <S.Hamburger menufill={menufill} />
       </S.StyledBurger>
       <S.Ul open={open}>
         <S.StyledLink to="/cart">

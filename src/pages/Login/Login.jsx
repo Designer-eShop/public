@@ -21,11 +21,11 @@ function getToken(email, password, auth, history, setError) {
         history.push("/");
         auth.setState("Bearer " + data.token);
       } else {
-        setError({ display: true, message: data.msg, color: "error" });
+        setError({ display: true, message: data.msg, color: "danger" });
       }
     })
     .catch((res) =>
-      setError({ display: true, message: res.message, color: "error" })
+      setError({ display: true, message: res.message, color: "danger" })
     );
 }
 

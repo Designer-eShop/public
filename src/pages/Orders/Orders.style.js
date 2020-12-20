@@ -42,7 +42,7 @@ export const DataBox = styled.div`
 export const TotalContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0px 15px;
-    margin-bottom: 64px;
+    margin-bottom: 24px;
   }
   text-align: right;
   color: ${(props) => props.theme.text.dark};

@@ -4,13 +4,36 @@ import { ReactComponent as CartImage } from "../../assets/cart.svg";
 import { ReactComponent as LogoImage } from "../../assets/logo.svg";
 import { ReactComponent as MenuImage } from "../../assets/menu.svg";
 
-export const Content = styled.div`
-  background: #383c43;
-`;
+export const Content = styled.div``;
 
 export const Header = styled.div`
-  @media (min-width: 1400px) {
-    width: 1400px;
+  position: ${(props) => props.position};
+  @media (min-width: 768px) {
+    width: ${(props) => props.navwidth};
+  }
+  @media (max-width: 768px) {
+    background: ${(props) =>
+      props.navbgcolor === "ok" ? props.theme.background.dark : ""};
+    background-position: fixed;
+    height: 80px;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: 1440px) {
+    background: ${(props) =>
+      props.navbgcolor === "ok" ? props.theme.background.dark : ""};
+    background-position: fixed;
+    height: 80px;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+  }
+  @media (min-width: 1450px) {
+    background: ${(props) =>
+      props.navbgcolorfs === "ok" ? props.theme.background.dark : ""};
   }
   margin: 0 auto;
   display: flex;
@@ -45,12 +68,20 @@ export const Logo = styled(LogoImage)`
   @media (max-width: 768px) {
     margin-left: 10px;
   }
+  .logocolor {
+    fill: ${(props) =>
+      props.logofill === "secondary" ? "" : props.theme.text.dark};
+  }
 `;
 
 export const Hamburger = styled(MenuImage)``;
 
 export const Cart = styled(CartImage)`
   padding: 0 12px;
+  .cart {
+    fill: ${(props) =>
+      props.cartfill === "secondary" ? "" : props.theme.text.dark};
+  }
 `;
 
 export const CenterText = styled.div`
@@ -64,7 +95,10 @@ export const CenterText = styled.div`
 export const StyledLink = styled(Link)`
   margin-left: 14px;
   text-decoration: none;
-  color: ${(props) => props.theme.text.light};
+  color: ${(props) =>
+    props.linkcolor === "secondary"
+      ? props.theme.text.light
+      : props.theme.text.dark};
   &:hover {
     color: ${(props) => props.theme.text.hover};
   }

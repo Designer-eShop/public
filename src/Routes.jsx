@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navigation, Loading, PrivateRoute, Footer } from "./components";
 
@@ -13,20 +13,58 @@ const SubmitLazy = lazy(() => import("./pages/SubmitOrder/SubmitOrder"));
 const OrdersLazy = lazy(() => import("./pages/Orders/Orders"));
 
 function Routes() {
+  const [scrollbar, setScrollbar] = useState(false);
+
+  const changeBackground = () => {
+    if (window.scrollY >= 10) {
+      setScrollbar(true);
+    } else {
+      setScrollbar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
+
   return (
     <Router>
-      <Navigation />
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/" component={HomeLazy} />
-          <Route exact path="/clothes/:id" component={ProductLazy} />
-          <Route exact path="/login" component={LoginLazy} />
-          <Route exact path="/register" component={RegisterLazy} />
-          <Route exact path="/forher" component={ForHerLazy} />
-          <Route exact path="/forhim" component={ForHimLazy} />
-          <Route exact path="/cart" component={CartLazy} />
-          <PrivateRoute exact path="/submit" component={SubmitLazy} />
-          <PrivateRoute exact path="/orders" component={OrdersLazy} />
+          <Route exact path={["/submit", "/orders"]}>
+            <Navigation />
+            <PrivateRoute exact path="/submit" component={SubmitLazy} />
+            <PrivateRoute exact path="/orders" component={OrdersLazy} />
+          </Route>
+          <Route exact path={["/", "/forher", "/forhim"]}>
+            <Navigation
+              menufill="secondary"
+              cartfill="secondary"
+              logofill="secondary"
+              position="fixed"
+              linkcolor="secondary"
+              navbgcolor={scrollbar && "ok"}
+              navbgcolorfs="ok"
+            />
+            <Route exact path="/" component={HomeLazy} />
+            <Route exact path="/forher" component={ForHerLazy} />
+            <Route exact path="/forhim" component={ForHimLazy} />
+          </Route>
+          <Route
+            exact
+            path={[
+              "/clothes/:id",
+              "/login",
+              "/register",
+              "/cart",
+              "/submit",
+              "/orders",
+            ]}
+          >
+            <Navigation />
+            <Route exact path="/clothes/:id" component={ProductLazy} />
+            <Route exact path="/login" component={LoginLazy} />
+            <Route exact path="/register" component={RegisterLazy} />
+            <Route exact path="/cart" component={CartLazy} />
+          </Route>
         </Switch>
       </Suspense>
       <Footer />

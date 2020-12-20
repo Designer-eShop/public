@@ -6,7 +6,6 @@ import { ReactComponent as CartImage } from "../../assets/cart.svg";
 export const StyledBurger = styled.div`
   width: 2rem;
   height: 2rem;
-  position: fixed;
   top: 24px;
   right: 20px;
   z-index: 20;
@@ -21,7 +20,7 @@ export const Ul = styled.ul`
   flex-flow: column nowrap;
   background-color: ${(props) => props.theme.text.hover};
   position: fixed;
-  transform: ${({ open }) => (open ? "translateX(40%)" : "translateX(100%)")};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   top: 0;
   right: 0;
   width: 300px;
@@ -33,7 +32,12 @@ export const Li = styled.li`
   color: ${(props) => props.theme.text.light};
 `;
 
-export const Hamburger = styled(MenuImage)``;
+export const Hamburger = styled(MenuImage)`
+  .menu {
+    fill: ${(props) =>
+      props.menufill === "secondary" ? "" : props.theme.text.dark};
+  }
+`;
 
 export const StyledLink = styled(Link)`
   text-decoration: none;

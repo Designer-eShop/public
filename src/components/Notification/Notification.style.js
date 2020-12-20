@@ -2,20 +2,21 @@ import styled from "styled-components";
 
 export const Box = styled.div`
   margin: 0 auto;
-  padding: 1em 0;
-  width: 50%;
   text-align: center;
+  font-family: Roboto;
+  max-width: 30%;
 `;
 
 export const NotificationBox = styled.div`
-  font-size: 24px;
-  padding: 1em 0;
-  padding-left: 1em;
-  border-radius: 6px;
-  color: ${(props) => props.theme.text.light};
-  font-weight: bolder;
+  padding: 16px 0px;
+  color: black;
+  font-size: 16px;
+  line-height: 19px;
+  border-radius: 3px;
   background-color: ${(props) =>
-    props.color === "error" ? props.theme.button.default : "green"};
+    props.color === "success"
+      ? props.theme.notification.success
+      : props.theme.notification.danger};
 `;
 
 export const NotificationButton = styled.span`
