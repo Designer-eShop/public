@@ -31,7 +31,7 @@ function ForHer() {
           <S.NotificationBox>
             <Notification
               color={error.color}
-              handleChange={() => setError(false)}
+              handleChange={setTimeout(() => setError(false), 3000)}
             >
               {error.message}
             </Notification>

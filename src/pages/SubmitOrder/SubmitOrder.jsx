@@ -86,9 +86,14 @@ function SubmitOrder() {
   return (
     <Section>
       {error.display && (
-        <Notification color={error.color} handleChange={() => setError(false)}>
-          {error.message}
-        </Notification>
+        <S.NotificationBox>
+          <Notification
+            color={error.color}
+            handleChange={setTimeout(() => setError(false), 3000)}
+          >
+            {error.message}
+          </Notification>
+        </S.NotificationBox>
       )}
       <S.Container>
         <S.Title>Submit order</S.Title>

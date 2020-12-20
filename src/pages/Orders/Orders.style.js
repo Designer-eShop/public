@@ -12,6 +12,7 @@ export const Title = styled.div`
   line-height: 77px;
   color: ${(props) => props.theme.text.dark};
   margin-left: 135px;
+  min-height: 350px;
 `;
 
 export const Container = styled.div`
@@ -58,4 +59,14 @@ export const Total = styled.div`
   font-size: 40px;
   line-height: 48px;
   margin: 32px 0px 16px 0px;
+`;
+
+export const NotificationBox = styled.div`
+  width: 50%;
+  position: fixed;
+  left: 25%;
+  @media (max-width: 768px) {
+    width: 80%;
+    left: 10%;
+  }
 `;

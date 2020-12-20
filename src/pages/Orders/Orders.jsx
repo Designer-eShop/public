@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Section, CartItem } from "../../components";
+import { Section, CartItem, Notification } from "../../components";
 import { AuthContext } from "../../context/AuthContext";
 import * as S from "./Orders.style";
 
@@ -7,6 +7,11 @@ function Orders() {
   const auth = useContext(AuthContext);
   const [clothes, setClothes] = useState([]);
   const [cart, setCart] = useState([]);
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   // Convert string of numbers into separate arrays
   const convertedToArray = cart.map((x) =>
@@ -41,11 +46,24 @@ function Orders() {
 
     fetch("http://192.168.1.11:8080/clothes")
       .then((res) => res.json())
-      .then((data) => setClothes(data));
+      .then((data) => setClothes(data))
+      .catch((res) => {
+        setError({ display: true, message: res.message, color: "error" });
+      });
   }, [auth]);
 
   return (
     <Section>
+      {error.display && (
+        <S.NotificationBox>
+          <Notification
+            color={error.color}
+            handleChange={setTimeout(() => setError(false), 3000)}
+          >
+            {error.message}
+          </Notification>
+        </S.NotificationBox>
+      )}
       <S.Title>Your orders</S.Title>
       {cart &&
         cart.map((item, index) => (

@@ -40,7 +40,11 @@ function Cart() {
     if (auth.state) {
       history.push("/submit");
     } else {
-      alert("Please login or register to continue");
+      setError({
+        display: true,
+        message: "Please login or register to continue",
+        color: "danger",
+      });
     }
   };
 
@@ -59,7 +63,7 @@ function Cart() {
         <S.NotificationBox>
           <Notification
             color={error.color}
-            handleChange={() => setError(false)}
+            handleChange={setTimeout(() => setError(false), 3000)}
           >
             {error.message}
           </Notification>
@@ -76,7 +80,19 @@ function Cart() {
       </S.Container>
       <S.TotalContainer>
         <S.Total>TOTAL: {totalPrice} €</S.Total>
-        <Button handleClick={(e) => checkLogin()}>Buy</Button>
+        <Button
+          handleClick={() =>
+            cart.items.length === 0
+              ? setError({
+                  display: true,
+                  message: "Shopping cart is empty!",
+                  color: "danger",
+                })
+              : checkLogin()
+          }
+        >
+          Buy
+        </Button>
       </S.TotalContainer>
     </Section>
   );
