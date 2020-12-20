@@ -5,7 +5,40 @@ import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import * as S from "./SubmitOrder.style";
 
-function updateUser(name, surname, phone, street, city, zip, auth, setError) {
+function submitCart(cart, auth, setError, history) {
+  fetch(`http://192.168.1.11:8080/cart`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: auth.state,
+    },
+    body: JSON.stringify({
+      product_id: cart.items.toString(),
+      status: 1,
+    }),
+  })
+    .then((data) => data.json())
+    .then(() => {
+      cart.setItems([]);
+      history.push("/orders");
+    })
+    .catch((res) =>
+      setError({ display: true, message: res.message, color: "danger" })
+    );
+}
+
+function updateUser(
+  name,
+  surname,
+  phone,
+  street,
+  city,
+  zip,
+  auth,
+  setError,
+  cart,
+  history
+) {
   fetch(`http://192.168.1.11:8080/updateuser`, {
     method: "POST",
     headers: {
@@ -23,37 +56,15 @@ function updateUser(name, surname, phone, street, city, zip, auth, setError) {
   })
     .then((data) => data.json())
     .then((data) => {
-      setError({ display: true, message: data.msg, color: "error" });
-    })
-    .catch((res) =>
-      setError({ display: true, message: res.message, color: "error" })
-    );
-}
-
-function submitCart(cart, auth, setError, history) {
-  fetch(`http://192.168.1.11:8080/cart`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: auth.state,
-    },
-    body: JSON.stringify({
-      product_id: cart.items.toString(),
-      status: 1,
-    }),
-  })
-    .then((data) => data.json())
-    .then((data) => {
-      if (data.msg) {
-        setError({ display: true, message: data.msg, color: "error" });
+      if (data.msg === "Information entered incorrectly") {
+        setError({ display: true, message: data.msg, color: "danger" });
       } else {
-        cart.setItems([]);
-        history.push("/orders");
+        submitCart(cart, auth, setError, history);
       }
     })
-    .catch((res) =>
-      setError({ display: true, message: res.message, color: "error" })
-    );
+    .catch((res) => {
+      setError({ display: true, message: res.message, color: "error" });
+    });
 }
 
 function SubmitOrder() {
@@ -86,8 +97,18 @@ function SubmitOrder() {
           required
           onSubmit={(e) => {
             e.preventDefault();
-            updateUser(name, surname, phone, street, city, zip, auth, setError);
-            submitCart(cart, auth, setError, history);
+            updateUser(
+              name,
+              surname,
+              phone,
+              street,
+              city,
+              zip,
+              auth,
+              setError,
+              cart,
+              history
+            );
           }}
           buttonName="Submit"
           inputs={[
