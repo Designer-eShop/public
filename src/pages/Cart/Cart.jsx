@@ -63,7 +63,7 @@ function Cart() {
         <S.NotificationBox>
           <Notification
             color={error.color}
-            handleChange={setTimeout(() => setError(false), 3000)}
+            handleChange={() => setError(false)}
           >
             {error.message}
           </Notification>
