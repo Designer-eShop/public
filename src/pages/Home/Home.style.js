@@ -48,3 +48,13 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.text.dark};
 `;
+
+export const NotificationBox = styled.div`
+  width: 50%;
+  position: fixed;
+  left: 25%;
+  @media (max-width: 768px) {
+    width: 80%;
+    left: 10%;
+  }
+`;

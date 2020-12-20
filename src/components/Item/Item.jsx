@@ -14,9 +14,14 @@ function Item({ array }) {
   return (
     <Section>
       {error.display && (
-        <Notification color={error.color} handleChange={() => setError(false)}>
-          {error.message}
-        </Notification>
+        <S.NotificationBox>
+          <Notification
+            color={error.color}
+            handleChange={() => setError(false)}
+          >
+            {error.message}
+          </Notification>
+        </S.NotificationBox>
       )}
       {array &&
         array.map((item) => (

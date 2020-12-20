@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Section, Card, Hero } from "../../components";
+import { Section, Card, Hero, Notification } from "../../components";
 import * as S from "./Home.style";
 import HeroImage from "../../assets/Hero-image.jpg";
 
 function Home() {
   const [clothes, setClothes] = useState([]);
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   useEffect(() => {
     fetch("http://192.168.1.11:8080/clothes")
       .then((res) => res.json())
       .then((data) => {
         setClothes(data);
-      });
+      })
+      .catch((res) =>
+        setError({ display: true, message: res.message, color: "danger" })
+      );
   }, []);
 
   return (
@@ -23,6 +31,16 @@ function Home() {
         slogan="Urban clothing for you"
       />
       <Section>
+        {error.display && (
+          <S.NotificationBox>
+            <Notification
+              color={error.color}
+              handleChange={() => setError(false)}
+            >
+              {error.message}
+            </Notification>
+          </S.NotificationBox>
+        )}
         <S.FlexBlock>
           <S.StyledLink to="/forher">
             <S.FlexBox>

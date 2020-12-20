@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
-import { CartItem, Section, Button } from "../../components";
+import { CartItem, Section, Button, Notification } from "../../components";
 import { useHistory } from "react-router-dom";
 import * as S from "./Cart.style";
 
@@ -22,6 +22,11 @@ function Cart() {
   const cart = useContext(CartContext);
   const auth = useContext(AuthContext);
   const history = useHistory();
+  const [error, setError] = useState({
+    display: false,
+    message: "",
+    color: "",
+  });
 
   // Select unique products by clothes id's
   const result = clothes.filter((e) => [...new Set(cart.items)].includes(e.id));
@@ -42,11 +47,24 @@ function Cart() {
   useEffect(() => {
     fetch("http://192.168.1.11:8080/clothes")
       .then((res) => res.json())
-      .then((data) => setClothes(data));
+      .then((data) => setClothes(data))
+      .catch((res) =>
+        setError({ display: true, message: res.message, color: "danger" })
+      );
   }, []);
 
   return (
     <Section>
+      {error.display && (
+        <S.NotificationBox>
+          <Notification
+            color={error.color}
+            handleChange={() => setError(false)}
+          >
+            {error.message}
+          </Notification>
+        </S.NotificationBox>
+      )}
       <S.Title>Shopping cart</S.Title>
       <S.Container>
         <CartItem

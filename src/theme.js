@@ -1,8 +1,4 @@
 const theme = {
-  breakpoints: {
-    desktop: "1400px",
-    tablet: "768px",
-  },
   button: {
     default: "#c33633",
     hover: "#982c2a",

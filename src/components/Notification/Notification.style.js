@@ -4,7 +4,7 @@ export const Box = styled.div`
   margin: 0 auto;
   text-align: center;
   font-family: Roboto;
-  max-width: 30%;
+  max-width: 100%;
 `;
 
 export const NotificationBox = styled.div`

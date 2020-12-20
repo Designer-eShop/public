@@ -46,12 +46,14 @@ function Register() {
     <>
       <Section>
         {error.display && (
-          <Notification
-            color={error.color}
-            handleChange={() => setError(false)}
-          >
-            {error.message}
-          </Notification>
+          <S.NotificationBox>
+            <Notification
+              color={error.color}
+              handleChange={() => setError(false)}
+            >
+              {error.message}
+            </Notification>
+          </S.NotificationBox>
         )}
         <S.Container>
           <S.Title>Register</S.Title>
@@ -61,7 +63,11 @@ function Register() {
             onSubmit={(e) => {
               e.preventDefault();
               if (password !== passwordR) {
-                alert("Your password do not match");
+                setError({
+                  display: true,
+                  message: "Passwords do not match",
+                  color: "error",
+                });
               } else {
                 getToken(email, password, history, setError);
               }

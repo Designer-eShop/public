@@ -44,12 +44,14 @@ function Login() {
     <>
       <Section>
         {error.display && (
-          <Notification
-            color={error.color}
-            handleChange={() => setError(false)}
-          >
-            {error.message}
-          </Notification>
+          <S.NotificationBox>
+            <Notification
+              color={error.color}
+              handleChange={() => setError(false)}
+            >
+              {error.message}
+            </Notification>
+          </S.NotificationBox>
         )}
         <S.Container>
           <S.Title>Login</S.Title>

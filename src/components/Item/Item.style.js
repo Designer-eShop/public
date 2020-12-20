@@ -88,3 +88,13 @@ export const Price = styled.div`
   font-size: 40px;
   line-height: 48px;
 `;
+
+export const NotificationBox = styled.div`
+  width: 50%;
+  position: fixed;
+  left: 25%;
+  @media (max-width: 768px) {
+    width: 80%;
+    left: 10%;
+  }
+`;
