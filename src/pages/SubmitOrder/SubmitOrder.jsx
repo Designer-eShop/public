@@ -97,6 +97,7 @@ function SubmitOrder() {
               type: "text",
               placeholder: "Type your first name",
               label: "First name",
+              minlength: "2",
             },
             {
               id: 2,
@@ -104,6 +105,7 @@ function SubmitOrder() {
               type: "text",
               placeholder: "Type your last name",
               label: "Last name",
+              minlength: "2",
             },
             {
               id: 3,
@@ -111,6 +113,7 @@ function SubmitOrder() {
               type: "number",
               placeholder: "Type your phone number",
               label: "Phone number",
+              minlength: "8",
             },
             {
               id: 4,
@@ -118,6 +121,7 @@ function SubmitOrder() {
               type: "text",
               placeholder: "Type your street",
               label: "Street",
+              minlength: "4",
             },
             {
               id: 5,
@@ -125,6 +129,7 @@ function SubmitOrder() {
               type: "text",
               placeholder: "Type your city",
               label: "City",
+              minlength: "3",
             },
             {
               id: 6,
@@ -132,6 +137,7 @@ function SubmitOrder() {
               type: "text",
               placeholder: "Type your zip code",
               label: "Zip code",
+              minlength: "5",
             },
           ]}
         />

@@ -71,6 +71,7 @@ function Login() {
                 type: "email",
                 placeholder: "Type your email address",
                 label: "Email address",
+                minlength: "6",
               },
               {
                 id: 2,
@@ -78,6 +79,7 @@ function Login() {
                 type: "password",
                 placeholder: "Type your password",
                 label: "Password",
+                minlength: "6",
               },
             ]}
           ></Form>

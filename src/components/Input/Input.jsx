@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Input.style";
 
-function Input({ type, inputChange, placeholder, value, required }) {
+function Input({ type, inputChange, placeholder, value, required, minlength }) {
   return (
     <S.Input
       type={type}
@@ -9,8 +9,8 @@ function Input({ type, inputChange, placeholder, value, required }) {
       onChange={inputChange}
       value={value}
       required={required}
+      minLength={minlength}
       maxLength="64"
-      minLength="6"
     />
   );
 }

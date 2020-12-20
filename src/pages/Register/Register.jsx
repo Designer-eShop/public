@@ -80,6 +80,7 @@ function Register() {
                 type: "email",
                 placeholder: "Type your email address",
                 label: "Email address",
+                minlength: "6",
               },
               {
                 id: 2,
@@ -87,6 +88,7 @@ function Register() {
                 type: "password",
                 placeholder: "Type your password",
                 label: "Password",
+                minlength: "6",
               },
               {
                 id: 3,

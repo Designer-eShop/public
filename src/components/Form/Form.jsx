@@ -23,6 +23,7 @@ function Form({
               type={item.type}
               placeholder={item.placeholder}
               required={required}
+              minlength={item.minlength}
             />
           </S.Label>
         ))}
