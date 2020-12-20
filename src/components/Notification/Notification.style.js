@@ -10,6 +10,8 @@ export const Box = styled.div`
 export const NotificationBox = styled.div`
   @media (max-width: 768px) {
     display: flex;
+    justify-content: space-between;
+    padding: 5px;
   }
   padding: 16px 0px;
   color: black;

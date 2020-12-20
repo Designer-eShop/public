@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Section, Notification } from "../../components";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -39,6 +39,15 @@ function Login() {
     message: "",
     color: "",
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    if (error.display === true) {
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <>

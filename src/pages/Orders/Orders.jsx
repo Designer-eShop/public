@@ -50,7 +50,13 @@ function Orders() {
       .catch((res) => {
         setError({ display: true, message: res.message, color: "error" });
       });
-  }, [auth]);
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    if (error.display === true) {
+      return () => clearTimeout(timer);
+    }
+  }, [auth, error]);
 
   return (
     <Section>

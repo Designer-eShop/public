@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Section, Notification } from "../../components";
 import { useHistory } from "react-router-dom";
 import * as S from "./Register.style";
@@ -40,6 +40,15 @@ function Register() {
     message: "",
     color: "",
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    if (error.display === true) {
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <>

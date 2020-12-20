@@ -55,7 +55,13 @@ function Cart() {
       .catch((res) =>
         setError({ display: true, message: res.message, color: "danger" })
       );
-  }, []);
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    if (error.display === true) {
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <Section>

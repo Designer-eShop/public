@@ -20,6 +20,10 @@ function Home() {
       .catch((res) =>
         setError({ display: true, message: res.message, color: "danger" })
       );
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Section, Form, Notification } from "../../components";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
@@ -82,6 +82,15 @@ function SubmitOrder() {
     message: "",
     color: "",
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 3000);
+    if (error.display === true) {
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <Section>
