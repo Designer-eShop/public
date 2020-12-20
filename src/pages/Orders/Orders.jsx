@@ -36,7 +36,7 @@ function Orders() {
   };
 
   useEffect(() => {
-    fetch("http://192.168.1.11:8080/orders", {
+    fetch("http://52.59.220.115:8080/orders", {
       headers: {
         Authorization: auth.state,
       },
@@ -44,7 +44,7 @@ function Orders() {
       .then((res) => res.json())
       .then((data) => setCart(data));
 
-    fetch("http://192.168.1.11:8080/clothes")
+    fetch("http://52.59.220.115:8080/clothes")
       .then((res) => res.json())
       .then((data) => setClothes(data))
       .catch((res) => {

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as S from "./Register.style";
 
 function getToken(email, password, history, setError) {
-  fetch(`http://192.168.1.11:8080/register`, {
+  fetch(`http://52.59.220.115:8080/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
