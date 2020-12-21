@@ -36,7 +36,7 @@ function Orders() {
   };
 
   useEffect(() => {
-    fetch("http://http://3.211.46.142:8080/orders", {
+    fetch("https://designer-eshop.azurewebsites.net/orders", {
       headers: {
         Authorization: auth.state,
       },
@@ -44,7 +44,7 @@ function Orders() {
       .then((res) => res.json())
       .then((data) => setCart(data));
 
-    fetch("http://http://3.211.46.142:8080/clothes")
+    fetch("https://designer-eshop.azurewebsites.net/clothes")
       .then((res) => res.json())
       .then((data) => setClothes(data))
       .catch((res) => {

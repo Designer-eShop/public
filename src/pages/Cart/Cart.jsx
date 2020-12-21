@@ -49,7 +49,7 @@ function Cart() {
   };
 
   useEffect(() => {
-    fetch("http://http://3.211.46.142:8080/clothes")
+    fetch("https://designer-eshop.azurewebsites.net/clothes")
       .then((res) => res.json())
       .then((data) => setClothes(data))
       .catch((res) =>

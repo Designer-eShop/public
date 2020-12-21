@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import * as S from "./Login.style";
 
 function getToken(email, password, auth, history, setError) {
-  fetch(`http://http://3.211.46.142:8080/login`, {
+  fetch(`https://designer-eshop.azurewebsites.net/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

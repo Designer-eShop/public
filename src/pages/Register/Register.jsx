@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as S from "./Register.style";
 
 function getToken(email, password, history, setError) {
-  fetch(`http://http://3.211.46.142:8080/register`, {
+  fetch(`https://designer-eshop.azurewebsites.net/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
