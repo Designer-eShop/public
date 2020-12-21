@@ -63,6 +63,8 @@ function Cart() {
     }
   }, [error]);
 
+  console.log(clothes);
+
   return (
     <Section>
       {error.display && (
