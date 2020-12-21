@@ -6,7 +6,7 @@ function Product({ match }) {
   const productId = match.params.id;
 
   useEffect(() => {
-    fetch("https://designer-eshop.azurewebsites.netclothes/" + productId)
+    fetch("https://designer-eshop.azurewebsites.net/clothes/" + productId)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [productId]);
