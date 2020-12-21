@@ -12,7 +12,7 @@ function Home() {
   });
 
   useEffect(() => {
-    fetch("https://designer-eshop.azurewebsites.net/clothes")
+    fetch("http://http://3.211.46.142:8080/clothes")
       .then((res) => res.json())
       .then((data) => {
         setClothes(data);

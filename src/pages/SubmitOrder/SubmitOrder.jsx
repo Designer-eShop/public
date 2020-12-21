@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import * as S from "./SubmitOrder.style";
 
 function submitCart(cart, auth, setError, history) {
-  fetch(`https://designer-eshop.azurewebsites.net/cart`, {
+  fetch(`http://http://3.211.46.142:8080/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function updateUser(
   cart,
   history
 ) {
-  fetch(`https://designer-eshop.azurewebsites.net/updateuser`, {
+  fetch(`http://http://3.211.46.142:8080/updateuser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
